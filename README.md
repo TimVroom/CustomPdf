@@ -26,12 +26,15 @@ Compatibility
 
 Installation Instructions
 -------------------------
-* Using Modman
+	* Using Modman
+	
 	```bash
 	modman clone https://github.com/TimVroom/CustomPdf.git
 	```
-* Using Composer
+	
+	* Using Composer
 	In your composer.json:
+	
 	```json
 	"require": { 
 		"timvroom/custompdf": "dev-master"
