@@ -37,6 +37,7 @@ modman clone https://github.com/TimVroom/CustomPdf.git
 	In your composer.json:
 	
 ```json
+{
 	"require": { 
 		"timvroom/custompdf": "dev-master"
     },
@@ -45,7 +46,8 @@ modman clone https://github.com/TimVroom/CustomPdf.git
             "type": "git",
             "url": "git@github.com:TimVroom/CustomPdf.git"
         }
-    ],
+    ]
+}
 ```
 
 Uninstallation
