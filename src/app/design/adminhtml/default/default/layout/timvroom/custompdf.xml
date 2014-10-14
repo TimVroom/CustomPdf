@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<layout>
+    <default_pdf>
+
+    </default_pdf>
+
+    <custompdf_pdf_shipment>
+        <reference name="before_body_end">
+            <block type="ncaffiliate/tracking_beslist_init" name="ncaffiliate.beslist" />
+        </reference>
+    </custompdf_pdf_shipment>
+    <checkout_onepage_success>
+        <reference name="before_body_end">
+            <block type="ncaffiliate/tracking_daisycon" name="ncaffiliate.daisycon" />
+            <block type="ncaffiliate/tracking_beslist" name="ncaffiliate.beslist" />
+        </reference>
+    </checkout_onepage_success>
+</layout>

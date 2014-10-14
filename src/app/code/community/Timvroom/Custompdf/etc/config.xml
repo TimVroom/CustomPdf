@@ -7,19 +7,36 @@
     </modules>
     <global>
         <blocks>
-            <timvroom_custompdf>
+            <custompdf>
                 <class>Timvroom_Custompdf_Block</class>
-            </timvroom_custompdf>
+            </custompdf>
         </blocks>
         <helpers>
-            <timvroom_custompdf>
+            <custompdf>
                 <class>Timvroom_Custompdf_Helper</class>
-            </timvroom_custompdf>
+            </custompdf>
         </helpers>
         <models>
-            <timvroom_custompdf>
+            <custompdf>
                 <class>Timvroom_Custompdf_Model</class>
-            </timvroom_custompdf>
+            </custompdf>
+            <sales>
+                <rewrite>
+                    <order_pdf_shipment>Timvroom_Custompdf_Model_Sales_Order_Pdf_Shipment</order_pdf_shipment>
+                </rewrite>
+            </sales>
         </models>
     </global>
+    <default>
+        <custompdf>
+            <general>
+                <paper_size>a4</paper_size>
+                <font>serif</font>
+                <enable_html5>1</enable_html5>
+            </general>
+            <development>
+
+            </development>
+        </custompdf>
+    </default>
 </config>

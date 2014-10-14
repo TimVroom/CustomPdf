@@ -7,10 +7,7 @@
  * @copyright   Copyright (c) 2012 NicheCommerce. (http://nichecommerce.nl)
  * @author      Tim Vroom (tim@nichecommerce.nl)
  */
-class Timvroom_Custompdf_Model_Sales_Order_Pdf_Shipment extends Timvroom_Custompdf_Model_Sales_Order_Pdf_Abstract
+class Timvroom_Custompdf_Helper_Render extends Mage_Core_Helper_Abstract
 {
-    public function getPdf($shipments = array())
-    {
-        $this->_preparePdf();
-    }
+
 }
