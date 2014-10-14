@@ -26,16 +26,17 @@ Compatibility
 
 Installation Instructions
 -------------------------
-	* Using Modman
 	
-	```bash
-	modman clone https://github.com/TimVroom/CustomPdf.git
-	```
+* Using Modman
 	
-	* Using Composer
+```bash
+modman clone https://github.com/TimVroom/CustomPdf.git
+```
+	
+* Using Composer
 	In your composer.json:
 	
-	```json
+```json
 	"require": { 
 		"timvroom/custompdf": "dev-master"
     },
@@ -45,7 +46,7 @@ Installation Instructions
             "url": "git@github.com:TimVroom/CustomPdf.git"
         }
     ],
-	```
+```
 
 Uninstallation
 --------------
