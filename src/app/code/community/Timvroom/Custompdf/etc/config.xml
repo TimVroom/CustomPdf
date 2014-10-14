@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Timvroom_Custompdf>
+            <version>1.0.0</version>
+        </Timvroom_Custompdf>
+    </modules>
+    <global>
+        <blocks>
+            <timvroom_custompdf>
+                <class>Timvroom_Custompdf_Block</class>
+            </timvroom_custompdf>
+        </blocks>
+        <helpers>
+            <timvroom_custompdf>
+                <class>Timvroom_Custompdf_Helper</class>
+            </timvroom_custompdf>
+        </helpers>
+        <models>
+            <timvroom_custompdf>
+                <class>Timvroom_Custompdf_Model</class>
+            </timvroom_custompdf>
+        </models>
+    </global>
+</config>

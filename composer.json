@@ -1,0 +1,15 @@
+{
+    "name": "Timvroom/Custompdf",
+    "license": "OSL-3.0",
+    "type": "magento-module",
+    "description": "Custom pdf module",
+    "require": {
+        "magento-hackathon/magento-composer-installer": "*"
+    },
+    "authors":[
+        {
+            "name":"Add your name here",
+            "email":"Add your email address here"
+        }
+    ]
+}

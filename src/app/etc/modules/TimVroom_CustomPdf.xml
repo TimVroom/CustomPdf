@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <TimVroom_CustomPdf>
+            <active>true</active>
+            <codePool>community</codePool>
+            <depends></depends>
+        </TimVroom_CustomPdf>
+    </modules>
+</config>
