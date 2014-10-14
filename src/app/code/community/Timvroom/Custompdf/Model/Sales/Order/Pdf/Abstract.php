@@ -11,8 +11,12 @@
 abstract class Timvroom_Custompdf_Model_Sales_Order_Pdf_Abstract extends Mage_Sales_Model_Order_Pdf_Abstract
 {
     protected $_pdf;
+    /** @var  Timvroom_Custompdf_Helper_Dompdf */
     protected $_helper;
 
+    /**
+     * Initialize dompdf helper
+     */
     protected function _construct()
     {
         parent::_construct();
@@ -21,8 +25,7 @@ abstract class Timvroom_Custompdf_Model_Sales_Order_Pdf_Abstract extends Mage_Sa
 
     protected function _preparePdf()
     {
-        $this->_pdf = new DOMPDF;
-
+        $this->_pdf = $this->_helper->getDomPdf();
         $this->_setupLayout();
     }
 

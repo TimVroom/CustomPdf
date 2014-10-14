@@ -21,18 +21,22 @@ class Timvroom_Custompdf_Helper_Dompdf extends Mage_Core_Helper_Abstract
     const XML_PATH_DEVELOPMENT_DEBUG_KEEP_TEMP = 'custompdf/development/debug_keep_temp';
     const XML_PATH_DEVELOPMENT_DEUBG_LAYOUT = 'custompdf/development/debug_layout';
 
+    /** @var bool $_isDompdfIncluded */
     static private $_isDompdfIncluded = false;
 
+    /**
+     * Initialize
+     */
     public function __construct()
     {
         $this->setupDompdf();
     }
 
-    public function getDomPdf()
-    {
-        return new DOMPDF();
-    }
-
+    /**
+     * Setup the dompdf environment
+     *
+     * @todo validate the dompdf path and allow custom location
+     */
     public function setupDompdf()
     {
         if (!static::$_isDompdfIncluded) {
@@ -86,6 +90,11 @@ class Timvroom_Custompdf_Helper_Dompdf extends Mage_Core_Helper_Abstract
             def('DEBUG_LAYOUT_PADDINGBOX', true);
             static::$_isDompdfIncluded = true;
         }
+    }
+
+    public function getDomPdf()
+    {
+        return new DOMPDF();
     }
 
     public function getPaperSizes()
