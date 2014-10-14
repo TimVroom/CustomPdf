@@ -1,10 +1,12 @@
 <?xml version="1.0"?>
 <config>
     <modules>
-        <TimVroom_CustomPdf>
+        <Timvroom_Custompdf>
             <active>true</active>
             <codePool>community</codePool>
-            <depends></depends>
-        </TimVroom_CustomPdf>
+            <depends>
+                <Mage_Sales />
+            </depends>
+        </Timvroom_Custompdf>
     </modules>
 </config>

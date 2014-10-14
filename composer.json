@@ -1,15 +1,16 @@
 {
-    "name": "Timvroom/Custompdf",
+    "name": "timvroom/custompdf",
     "license": "OSL-3.0",
     "type": "magento-module",
     "description": "Custom pdf module",
     "require": {
-        "magento-hackathon/magento-composer-installer": "*"
+        "magento-hackathon/magento-composer-installer": "*",
+        "dompdf/dompdf": "*"
     },
     "authors":[
         {
-            "name":"Add your name here",
-            "email":"Add your email address here"
+            "name":"Tim Vroom",
+            "email":"tim@nichecommerce.nl"
         }
     ]
 }
