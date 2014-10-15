@@ -9,8 +9,4 @@
  */
 class Timvroom_Custompdf_Model_Sales_Order_Pdf_Shipment extends Timvroom_Custompdf_Model_Sales_Order_Pdf_Abstract
 {
-    public function getPdf($shipments = array())
-    {
-        $this->_preparePdf();
-    }
 }

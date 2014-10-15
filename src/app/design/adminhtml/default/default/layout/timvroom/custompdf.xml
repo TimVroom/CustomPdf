@@ -1,18 +1,61 @@
 <?xml version="1.0"?>
 <layout>
-    <default_pdf>
+    <pdf translate="label" module="custompdf">
+        <label>All Pages (Pdf Version based on print)</label>
+        <!-- Mage_Page -->
+        <block type="page/html" name="root" output="toHtml" template="timvroom/pdf/page/pdf.phtml">
 
-    </default_pdf>
+            <block type="page/html_head" name="head" as="head">
+                <action method="addJs">
+                    <script>prototype/prototype.js</script>
+                </action>
+                <action method="addJs">
+                    <script>mage/translate.js</script>
+                </action>
+                <action method="addJs">
+                    <script>lib/ccard.js</script>
+                </action>
+                <action method="addJs">
+                    <script>prototype/validation.js</script>
+                </action>
+                <action method="addJs">
+                    <script>varien/js.js</script>
+                </action>
+
+                <action method="addCss">
+                    <stylesheet>css/styles.css</stylesheet>
+                </action>
+                <action method="addItem">
+                    <type>skin_css</type>
+                    <name>css/styles-ie.css</name>
+                    <params/>
+                    <if>lt IE 8</if>
+                </action>
+                <action method="addCss">
+                    <stylesheet>css/widgets.css</stylesheet>
+                </action>
+                <action method="addCss">
+                    <stylesheet>css/pdf.css</stylesheet>
+                </action>
+            </block>
+
+            <block type="core/text_list" name="content" as="content" translate="label">
+                <label>Main Content Area</label>
+            </block>
+        </block>
+    </pdf>
 
     <custompdf_pdf_shipment>
-        <reference name="before_body_end">
-            <block type="ncaffiliate/tracking_beslist_init" name="ncaffiliate.beslist" />
+        <label>Sales Shipment Print View</label>
+        <reference name="content">
+            <block type="sales/order_print_shipment" name="sales.order.print.shipment"
+                   template="sales/order/print/shipment.phtml">
+                <action method="addItemRender">
+                    <type>default</type>
+                    <block>sales/order_item_renderer_default</block>
+                    <template>sales/order/shipment/items/renderer/default.phtml</template>
+                </action>
+            </block>
         </reference>
     </custompdf_pdf_shipment>
-    <checkout_onepage_success>
-        <reference name="before_body_end">
-            <block type="ncaffiliate/tracking_daisycon" name="ncaffiliate.daisycon" />
-            <block type="ncaffiliate/tracking_beslist" name="ncaffiliate.beslist" />
-        </reference>
-    </checkout_onepage_success>
 </layout>

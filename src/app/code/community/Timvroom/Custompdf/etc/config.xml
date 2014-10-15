@@ -27,6 +27,15 @@
             </sales>
         </models>
     </global>
+    <adminhtml>
+        <layout>
+            <updates>
+                <timvroom_custompdf>
+                    <file>timvroom/custompdf.xml</file>
+                </timvroom_custompdf>
+            </updates>
+        </layout>
+    </adminhtml>
     <default>
         <custompdf>
             <general>
@@ -35,7 +44,12 @@
                 <enable_html5>1</enable_html5>
             </general>
             <development>
-
+                <log_file_name>pdf.log</log_file_name>
+                <show_warnings>0</show_warnings>
+                <debug>0</debug>
+                <debug_css>0</debug_css>
+                <debug_keep_temp>0</debug_keep_temp>
+                <debug_layout>0</debug_layout>
             </development>
         </custompdf>
     </default>
