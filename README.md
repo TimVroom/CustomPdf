@@ -5,7 +5,7 @@ It also makes it possible to use HTML templates for pdf generation
 
 Facts
 -----
-- version: 1.0.0
+- version: 1.0.0 - alpha
 
 Description
 -----------
