@@ -4,24 +4,18 @@
  *
  * NOTICE OF LICENSE
  *
- * This source file is subject to the Academic Free License (AFL 3.0)
- * that is bundled with this package in the file LICENSE_AFL.txt.
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
  * It is also available through the world-wide-web at this URL:
- * http://opensource.org/licenses/afl-3.0.php
+ * http://opensource.org/licenses/osl-3.0.php
  * If you did not receive a copy of the license and are unable to
  * obtain it through the world-wide-web, please send an email
  * to license@magentocommerce.com so we can send you a copy immediately.
  *
- * DISCLAIMER
- *
- * Do not edit or add to this file if you wish to upgrade Magento to newer
- * versions in the future. If you wish to customize Magento for your
- * needs please refer to http://www.magentocommerce.com for more information.
- *
- * @category    design
- * @package     base_default
- * @copyright   Copyright (c) 2014 Magento Inc. (http://www.magentocommerce.com)
- * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ * @category   TimVroom
+ * @package    Timvroom_Custompdf
+ * @copyright  Copyright (c) 2014 - Nichecommerce (http://www.nichecommerce.nl)
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 ?>
 <?php
@@ -30,24 +24,47 @@
  */
 ?>
 <!DOCTYPE html>
-<!--[if lt IE 7 ]> <html lang=<?php echo $this->getLang(); ?> id="top" class="no-js ie6"> <![endif]-->
-<!--[if IE 7 ]>    <html lang=<?php echo $this->getLang(); ?> id="top" class="no-js ie7"> <![endif]-->
-<!--[if IE 8 ]>    <html lang=<?php echo $this->getLang(); ?> id="top" class="no-js ie8"> <![endif]-->
-<!--[if IE 9 ]>    <html lang=<?php echo $this->getLang(); ?> id="top" class="no-js ie9"> <![endif]-->
-<!--[if (gt IE 9)|!(IE)]><!--> <html lang=<?php echo $this->getLang(); ?> id="top" class="no-js"> <!--<![endif]-->
+<html lang=<?php echo $this->getLang(); ?> id="top" class="">
 <head>
-    <?php echo $this->getChildHtml('head') ?>
+    <?php echo $this->getChildHtml('head'); ?>
 </head>
-<body class="page-pdf<?php echo $this->getBodyClass()?$this->getBodyClass():'' ?>">
-<div>
-    <div class="pdf-head">
-        <img src="<?php echo $this->getPrintLogoUrl() ? $this->getPrintLogoUrl() : $this->getSkinUrl('images/logo_print.gif') ?>" class="logo" alt="" />
-        <?php if ($this->getPrintLogoText()):?>
-            <address><?php echo nl2br($this->escapeHtml($this->getPrintLogoText())) ?></address>
-        <?php endif;?>
-    </div>
-    <?php echo $this->getChildHtml('content') ?>
-    <?php echo $this->getAbsoluteFooter() ?>
-</div>
+<body class="page-pdf<?php echo $this->getBodyClass() ? $this->getBodyClass() : '' ?>">
+<?php if ($this->getObjects()) :
+    $size    = $this->getObjects()->getSize();
+    $i       = 0;
+    $storeId = 0;
+    $appEmulation = Mage::getSingleton('core/app_emulation');
+    foreach ($this->getObjects() as $object):
+        if ($object->getStoreId()) {
+            $storeId = $object->getStoreId();
+            $initialEnvironmentInfo = $appEmulation->startEnvironmentEmulation($storeId);
+        }
+        if (Mage::registry('current_object')){
+            Mage::unregister('current_object');
+        }
+        Mage::register('current_object', $object);
+        ?>
+        <script type="text/php">
+            if (isset($pdf)) {
+                $cpdf = $pdf->get_cpdf();
+                $cpdf->objects[$cpdf->currentPage]['info']['newPage'] = true;
+            }
+        </script>
+        <div class="<?php if (++$i < $size) { ?>pagebreak<?php } ?> newdoc">
+            <div class="pdf-head">
+                <?php $logoSrc = Mage::getStoreConfig('design/header/logo_src', $storeId); ?>
+                <img
+                    src="<?php echo $this->getSkinUrl($logoSrc) ? $this->getSkinUrl($logoSrc) : $this->getSkinUrl('images/logo_print.gif') ?>"
+                    class="logo" alt=""/>
+            </div>
+            <?php echo $this->getChildHtml('content', false) ?>
+            <?php echo $this->getChildHtml('footer', false) ?>
+        </div>
+    <?php endforeach;
+endif;?>
+<?php
+if ($object->getStoreId()) {
+    $appEmulation->stopEnvironmentEmulation($initialEnvironmentInfo);
+}?>
 </body>
 </html>

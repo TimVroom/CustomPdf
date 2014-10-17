@@ -4,58 +4,40 @@
         <label>All Pages (Pdf Version based on print)</label>
         <!-- Mage_Page -->
         <block type="page/html" name="root" output="toHtml" template="timvroom/pdf/page/pdf.phtml">
-
-            <block type="page/html_head" name="head" as="head">
-                <action method="addJs">
-                    <script>prototype/prototype.js</script>
-                </action>
-                <action method="addJs">
-                    <script>mage/translate.js</script>
-                </action>
-                <action method="addJs">
-                    <script>lib/ccard.js</script>
-                </action>
-                <action method="addJs">
-                    <script>prototype/validation.js</script>
-                </action>
-                <action method="addJs">
-                    <script>varien/js.js</script>
-                </action>
-
+            <block type="adminhtml/page_head" name="head" as="head" template="page/head.phtml">
                 <action method="addCss">
-                    <stylesheet>css/styles.css</stylesheet>
-                </action>
-                <action method="addItem">
-                    <type>skin_css</type>
-                    <name>css/styles-ie.css</name>
-                    <params/>
-                    <if>lt IE 8</if>
-                </action>
-                <action method="addCss">
-                    <stylesheet>css/widgets.css</stylesheet>
-                </action>
-                <action method="addCss">
-                    <stylesheet>css/pdf.css</stylesheet>
+                    <stylesheet>timvroom/custompdf.css</stylesheet>
                 </action>
             </block>
 
             <block type="core/text_list" name="content" as="content" translate="label">
                 <label>Main Content Area</label>
             </block>
+            <block type="core/text_list" name="footer" as="footer" translate="label">
+                <label>After content footer</label>
+                <block type="custompdf/adminhtml_template" name="footer.notices" template="timvroom/pdf/page/html/notices.phtml" />
+                <block type="custompdf/adminhtml_template" name="footer.disclaimer" template="timvroom/pdf/page/html/disclaimer.phtml" />
+            </block>
         </block>
     </pdf>
 
-    <custompdf_pdf_shipment>
+    <adminhtml_sales_shipment_pdfshipments>
         <label>Sales Shipment Print View</label>
+        <reference name="root">
+            <action method="setTitle"><title>Packingslip</title></action>
+        </reference>
         <reference name="content">
-            <block type="sales/order_print_shipment" name="sales.order.print.shipment"
-                   template="sales/order/print/shipment.phtml">
-                <action method="addItemRender">
-                    <type>default</type>
-                    <block>sales/order_item_renderer_default</block>
-                    <template>sales/order/shipment/items/renderer/default.phtml</template>
-                </action>
+            <block type="custompdf/adminhtml_sales_pdf_shipment" name="sales.order.print.shipment"
+                   template="timvroom/pdf/sales/order/shipment.phtml">
+                <!--<action method="addItemRender">-->
+                    <!--<type>default</type>-->
+                    <!--<block>sales/order_item_renderer_default</block>-->
+                    <!--<template>sales/order/shipment/items/renderer/default.phtml</template>-->
+                <!--</action>-->
             </block>
         </reference>
-    </custompdf_pdf_shipment>
+        <reference name="footer">
+            <block type="custompdf/adminhtml_template" name="footer.received" template="timvroom/pdf/page/html/received.phtml" after="footer.notices" />
+        </reference>
+    </adminhtml_sales_shipment_pdfshipments>
 </layout>

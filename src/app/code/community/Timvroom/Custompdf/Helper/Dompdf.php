@@ -50,6 +50,10 @@ class Timvroom_Custompdf_Helper_Dompdf extends Mage_Core_Helper_Abstract
             if (!is_dir(DOMPDF_FONT_CACHE)) {
                 mkdir(DOMPDF_FONT_CACHE, 0777, true);
             }
+
+            def("DOMPDF_ADMIN_USERNAME", "admin");
+            def("DOMPDF_ADMIN_PASSWORD", md5("admin".rand(0,1000)));
+
             def("DOMPDF_TEMP_DIR", Mage::getBaseDir('tmp') . DS . implode(DS, array('dompdf', 'temp')));
             def("DOMPDF_CHROOT", realpath(DOMPDF_DIR));
             def("DOMPDF_UNICODE_ENABLED", true);
@@ -59,12 +63,12 @@ class Timvroom_Custompdf_Helper_Dompdf extends Mage_Core_Helper_Abstract
             def("DOMPDF_DEFAULT_PAPER_SIZE", $this->getDefaultPaperSize());
             def("DOMPDF_DEFAULT_FONT", $this->getDefaultFont());
             def("DOMPDF_DPI", 96);
-            def("DOMPDF_ENABLE_PHP", false);
+            def("DOMPDF_ENABLE_PHP", true);
             def("DOMPDF_ENABLE_JAVASCRIPT", true);
-            def("DOMPDF_ENABLE_REMOTE", false);
+            def("DOMPDF_ENABLE_REMOTE", true);
             def("DOMPDF_LOG_OUTPUT_FILE", Mage::getBaseDir('log') . DS . $this->getLogFile());
             def("DOMPDF_FONT_HEIGHT_RATIO", 1.1);
-            def("DOMPDF_ENABLE_CSS_FLOAT", false);
+            def("DOMPDF_ENABLE_CSS_FLOAT", true);
             def("DOMPDF_AUTOLOAD_PREPEND", false);
             def("DOMPDF_ENABLE_HTML5PARSER", $this->isEnabledHtml5());
             require_once(DOMPDF_LIB_DIR . "/html5lib/Parser.php");
@@ -88,6 +92,9 @@ class Timvroom_Custompdf_Helper_Dompdf extends Mage_Core_Helper_Abstract
             def('DEBUG_LAYOUT_BLOCKS', true);
             def('DEBUG_LAYOUT_INLINE', true);
             def('DEBUG_LAYOUT_PADDINGBOX', true);
+            if (!is_file(DOMPDF_LOG_OUTPUT_FILE)) {
+                touch(DOMPDF_LOG_OUTPUT_FILE);
+            }
             static::$_isDompdfIncluded = true;
         }
     }

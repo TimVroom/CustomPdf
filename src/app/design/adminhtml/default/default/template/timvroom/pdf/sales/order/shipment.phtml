@@ -1,0 +1,92 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * @category   TimVroom
+ * @package    Timvroom_Custompdf
+ * @copyright  Copyright (c) 2014 - Nichecommerce (http://www.nichecommerce.nl)
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+?>
+<h1><?php echo $this->helper('custompdf')->getPdfTitle();?></h1>
+<label>Levering aan:</label>
+<address>
+    <?php $shippingAddress = $this->getShippingAddress(); ?>
+    <span class="label">Klantnaam: </span><?php echo $shippingAddress->getName(); ?><br/>
+    <span class="label">Address: </span><?php echo $shippingAddress->getStreetFull(); ?><br/>
+    <span
+        class="label">Postcode: </span><?php echo $shippingAddress->getPostcode(); ?> <?php echo $shippingAddress->getCity(); ?>
+    <br/>
+</address>
+<br/>
+
+<table class="data-table info-table">
+    <tr>
+        <th class="col-1"><?php echo $this->__('Pakbonnummer');?></th>
+        <td class="col-2">: <?php echo $this->getShipment()->getIncrementId(); ?></td>
+        <th class="col-3"><?php echo $this->__('Billing name');?></th>
+        <td class="col-4">: <?php echo $this->getBillingAddress()->getName();?></td>
+    </tr>
+    <tr>
+        <th class="col-1"><?php echo $this->__('Delivery date');?></th>
+        <td class="col-2">:</td>
+        <th class="col-3"><?php echo $this->__('Shipping method');?></th>
+        <td class="col-4">: <?php echo $this->getOrder()->getShippingDescription();?></td>
+    </tr>
+    <tr>
+        <th class="col-1"><?php echo $this->__('Order #');?></th>
+        <td class="col-2">: <?php echo $this->getOrder()->getIncrementId(); ?></td>
+        <th class="col-3"><?php echo $this->__('Payment method');?></th>
+        <td class="col-4">: <?php echo $this->getOrder()->getPayment()->getMethodInstance()->getTitle();?></td>
+    </tr>
+</table>
+<hr/>
+<div class="content-block">
+    <div class="products">
+        <table class="data-table products-table">
+            <thead>
+            <tr>
+                <th class="col-1"><?php echo $this->__('Item');?></th>
+                <th class="col-2"><?php echo $this->__('Qty ordered');?></th>
+                <th class="col-3"><?php echo $this->__('Qty delivered');?></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>Perfect Sleep</td>
+                <td>2</td>
+            </tr>
+            <tr>
+                <td>KussenSleep</td>
+                <td>1</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="totals clearfix">
+        <table class=totals-table>
+            <tr>
+                <th>Totaal bedrag:</th>
+                <td>...</td>
+            </tr>
+            <tr>
+                <th>BTW:</th>
+                <td>...</td>
+            </tr>
+            <tr>
+                <th>Te voldoen bij levering</th>
+                <td>...</td>
+            </tr>
+        </table>
+    </div>
+</div>

@@ -1,4 +1,6 @@
 src/app/code/community/Timvroom/Custompdf     app/code/community/Timvroom/Custompdf
 src/app/design/adminhtml/default/default/layout/timvroom/* app/design/adminhtml/default/default/layout/timvroom/
 src/app/design/adminhtml/default/default/template/timvroom/pdf app/design/adminhtml/default/default/template/timvroom/pdf
+src/app/locale/nl_NL/* app/locale/nl_NL/
 src/app/etc/modules/*    app/etc/modules/
+src/skin/adminhtml/default/default/timvroom/* skin/adminhtml/default/default/timvroom/

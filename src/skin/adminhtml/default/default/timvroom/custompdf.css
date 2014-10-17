@@ -1,0 +1,110 @@
+body {
+  font-size: 14px;
+  font-family: "Lucida Grande", sans-serif;
+  line-height: 1.4; }
+
+.pagebreak {
+  page-break-after: always; }
+
+.clearfix {
+  *zoom: 1; }
+  .clearfix:before, .clearfix:after {
+    display: table;
+    line-height: 0;
+    content: ""; }
+  .clearfix:after {
+    clear: both; }
+
+.clearfix:after {
+  clear: both; }
+
+.logo {
+  float: right; }
+
+.small {
+  font-size: 10px; }
+
+address {
+  font-style: normal; }
+  address .label {
+    font-weight: bold; }
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse; }
+  .data-table th {
+    text-align: left; }
+
+.info-table .col-1 {
+  width: 10%; }
+.info-table .col-2 {
+  width: 30%; }
+.info-table .col-3 {
+  width: 10%; }
+.info-table .col-4 {
+  width: 50%; }
+.info-table th {
+  white-space: nowrap; }
+
+.content-block {
+  padding: 0 20px 20px; }
+
+.products-table .col-1 {
+  width: 80%; }
+.products-table .col-2 {
+  width: 10%; }
+.products-table .col-3 {
+  width: 10%; }
+.products-table thead tr {
+  background: #cccccc;
+  border-top: 0; }
+.products-table tr {
+  border-top: 1px solid #ccc; }
+
+.totals {
+  text-align: right;
+  margin-top: 20px; }
+  .totals:after {
+    content: " ";
+    display: table;
+    clear: both; }
+  .totals .totals-table {
+    text-align: right;
+    width: 100%;
+    line-height: 1.2em; }
+    .totals .totals-table th {
+      text-align: right;
+      width: 100%; }
+    .totals .totals-table td {
+      text-align: left;
+      padding-left: 20px; }
+
+.notice {
+  min-height: 80px; }
+  .notice h2 {
+    margin-top: 0; }
+  .notice .block {
+    width: 90%;
+    margin-left: 5%;
+    height: 70px;
+    background: #eeeeee;
+    margin-bottom: 20px; }
+
+.confirmation .fieldset {
+  margin: 0 10%; }
+  .confirmation .fieldset .field {
+    position: relative;
+    padding-bottom: 4px; }
+    .confirmation .fieldset .field .dotted-line {
+      display: block;
+      border-top: 1px dotted #000;
+      width: 70%;
+      margin-left: 10%;
+      bottom: 0;
+      height: 0;
+      margin-top: 14px; }
+
+.disclaimer {
+  font-size: 10px; }
+
+/*# sourceMappingURL=custompdf.css.map */

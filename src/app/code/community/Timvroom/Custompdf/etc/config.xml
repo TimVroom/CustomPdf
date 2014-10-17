@@ -35,6 +35,15 @@
                 </timvroom_custompdf>
             </updates>
         </layout>
+        <translate>
+            <modules>
+                <timvroom_custompdf>
+                    <files>
+                        <default>Timvroom_Custompdf.csv</default>
+                    </files>
+                </timvroom_custompdf>
+            </modules>
+        </translate>
     </adminhtml>
     <default>
         <custompdf>
@@ -43,6 +52,12 @@
                 <font>serif</font>
                 <enable_html5>1</enable_html5>
             </general>
+            <pdf>
+                <title>Afleverbon</title>
+                <disclaimer><![CDATA[U bent als afnemer verplicht de geleverde artikelen direct bij ontvangst te onderzoeken.
+                Hierbij behoort u te onderzoeken of kwaliteit en kwantiteit van het geleverde overeenstemmen met hetgeen overeengekomen is.
+                Eventuele manco's dienen binnen 24 uur na ontvangst schriftelijk of per e-mail aan ons gemeld te worden.]]></disclaimer>
+            </pdf>
             <development>
                 <log_file_name>pdf.log</log_file_name>
                 <show_warnings>0</show_warnings>
