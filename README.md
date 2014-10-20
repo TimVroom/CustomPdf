@@ -12,11 +12,13 @@ Description
 This module will overwrite the default magento PDF functionality for invoices, shipments and creditmemos.
 It uses HTML templates to render the PDF.
 
-This allows you to use your magento theme CSS files and enables customisation for Frontend-developers
+This allows you to use your magento theme CSS files and enables customisation for Frontend-developers.
+
+It is still a work in progress. It works for package slips. Templates are a mess. Time for a refactor.
 
 Requirements
 ------------
-- PHP >= 5.3.0
+- PHP >= 5.4.0
 - Mage_Core
 - Mage_Sales
 
