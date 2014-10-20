@@ -27,6 +27,17 @@
             </sales>
         </models>
     </global>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <catalogcustom before="Mage_Adminhtml">Timvroom_Custompdf_Adminhtml</catalogcustom>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
     <adminhtml>
         <layout>
             <updates>

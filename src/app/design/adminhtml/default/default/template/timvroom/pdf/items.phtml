@@ -18,3 +18,22 @@
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 ?>
+<?php if (count($this->getItems()) > 0): ?>
+    <div class="products">
+        <table class="data-table products-table">
+            <thead>
+            <tr>
+                <th class="col-1"><?php echo $this->__('Item'); ?></th>
+                <th class="col-2"><?php echo $this->__('Sku'); ?></th>
+                <th class="col-3"><?php echo $this->__('Qty ordered'); ?></th>
+                <th class="col-4"><?php echo $this->__('Qty delivered'); ?></th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php foreach ($this->getItems() as $item): ?>
+                <?php echo $this->getItemHtml($item); ?>
+            <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+<?php endif;

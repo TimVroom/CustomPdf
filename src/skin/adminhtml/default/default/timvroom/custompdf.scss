@@ -1,13 +1,22 @@
 $spacing: 20px;
 $border-color: #ccc;
 
-$f: 14px;
+$f-xl: 18px;
+$f-l: 16px;
+$f: 12px;
 $f-s: 10px;
 
 body {
     font-size: $f;
     font-family: "Lucida Grande", sans-serif;
     line-height: 1.4;
+}
+
+h1 {
+    font-size: $f-xl;
+}
+h2 {
+    font-size: $f-l;
 }
 
 .pagebreak {
@@ -26,8 +35,8 @@ body {
     }
 }
 
-.clearfix:after {
-    clear: both;
+.a-right {
+    text-align: right !important;
 }
 
 .logo {
@@ -40,6 +49,7 @@ body {
 
 address {
     font-style: normal;
+    margin-bottom: $spacing;
     .label {
         font-weight: bold;
     }
@@ -78,13 +88,11 @@ address {
 
 .products-table {
     .col-1 {
-        width: 80%;
+        width: 70%;
     }
-    .col-2 {
+    .col-2, .col-3, .col-4 {
         width: 10%;
-    }
-    .col-3 {
-        width: 10%;
+        text-align: center;
     }
 
     thead {
@@ -92,10 +100,25 @@ address {
             background: #cccccc;
             border-top: 0;
         }
+        th {
+            padding-left: 4px;
+            padding-right: 4px;
+        }
     }
 
-    tr {
-        border-top: 1px solid $border-color;
+    tbody{
+        tr {
+            td {
+                border-top: 1px solid $border-color;
+            }
+        }
+    }
+
+    .item-options {
+        font-size: $f-s;
+        dt {
+            font-weight: bold;
+        }
     }
 }
 
@@ -111,6 +134,8 @@ address {
         text-align: right;
         width:      100%;
         line-height: 1.2em;
+        border-top: 1px solid $border-color;
+
         th {
             text-align: right;
             width:      100%;
@@ -118,6 +143,7 @@ address {
         td {
             text-align:   left;
             padding-left: $spacing;
+            white-space: nowrap;
         }
     }
 }
@@ -152,6 +178,9 @@ address {
                 bottom:      0;
                 height:      0;
                 margin-top:  14px;
+            }
+            &.field-signature {
+                margin-top: $spacing;
             }
         }
     }

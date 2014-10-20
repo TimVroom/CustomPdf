@@ -55,13 +55,13 @@ abstract class Timvroom_Custompdf_Model_Sales_Order_Pdf_Abstract extends Varien_
             // Controller is not given so misuse debug_backtrace
             $backtrace = debug_backtrace();
             foreach ($backtrace as $trace) {
-                if (is_a($trace['object'], 'Mage_Core_Controller_Varien_Action')) {
+                if ($trace['object'] instanceof Mage_Core_Controller_Varien_Action) {
                     $this->_controllerObject = $trace['object'];
                     break;
                 }
             }
         }
-        if (!is_a($this->_controllerObject, 'Mage_Core_Controller_Varien_Action')) {
+        if (!($this->_controllerObject instanceof Mage_Core_Controller_Varien_Action)) {
             throw new Mage_Adminhtml_Exception("Cannot properly load the controller object. This is required");
         }
         $this->_pdf = $this->_helper->getDomPdf();
@@ -90,11 +90,13 @@ abstract class Timvroom_Custompdf_Model_Sales_Order_Pdf_Abstract extends Varien_
         $canvas->page_script("
             \$helper = Mage::helper('custompdf/render');
             \$pageCount = \$helper->getPageSize(\$pdf);
-            \$font = Font_Metrics::get_font('helvetica', 'normal');
-            \$size = 9;
-            \$y = \$pdf->get_height() - 24;
-            \$x = \$pdf->get_width() - 15 - Font_Metrics::get_text_width('1/1', \$font, \$size);
-            \$pdf->text(\$x, \$y, \$helper->getIterator().'/'. \$pageCount, \$font, \$size);
+            if (\$pageCount > 1){
+                \$font = Font_Metrics::get_font('helvetica', 'normal');
+                \$size = 9;
+                \$y = \$pdf->get_height() - 24;
+                \$x = \$pdf->get_width() - 15 - Font_Metrics::get_text_width('1/1', \$font, \$size);
+                \$pdf->text(\$x, \$y, \$helper->getIterator().'/'. \$pageCount, \$font, \$size);
+            }
             \$helper->incrementIterator(\$pageCount);
         ");
         $canvas->close_object();

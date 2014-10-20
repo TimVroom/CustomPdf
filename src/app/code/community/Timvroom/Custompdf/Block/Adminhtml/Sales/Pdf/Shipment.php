@@ -14,4 +14,8 @@ class Timvroom_Custompdf_Block_Adminhtml_Sales_Pdf_Shipment extends Timvroom_Cus
     {
         return $this->getObject();
     }
+
+    public function getShipmentItems(){
+
+    }
 }

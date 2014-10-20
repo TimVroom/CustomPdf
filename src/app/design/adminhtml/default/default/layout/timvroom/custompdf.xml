@@ -29,15 +29,31 @@
         <reference name="content">
             <block type="custompdf/adminhtml_sales_pdf_shipment" name="sales.order.print.shipment"
                    template="timvroom/pdf/sales/order/shipment.phtml">
-                <!--<action method="addItemRender">-->
-                    <!--<type>default</type>-->
-                    <!--<block>sales/order_item_renderer_default</block>-->
-                    <!--<template>sales/order/shipment/items/renderer/default.phtml</template>-->
-                <!--</action>-->
+                <block type="custompdf/adminhtml_sales_item" template="timvroom/pdf/items.phtml" name="items">
+                    <action method="addItemRender">
+                        <type>default</type>
+                        <block>custompdf/adminhtml_sales_item_renderer</block>
+                        <template>timvroom/pdf/items/renderer/default.phtml</template>
+                    </action>
+                </block>
+                <block type="custompdf/adminhtml_sales_pdf_totals" name="order_totals" template="timvroom/pdf/sales/order/totals.phtml">
+                    <action method="setLabelProperties"><value>colspan="4" class="a-right"</value></action>
+                    <action method="setValueProperties"><value>class="last a-right"</value></action>
+                    <block type="tax/sales_order_tax" name="tax" template="timvroom/pdf/tax.phtml">
+                        <action method="setIsPlaneMode"><value>1</value></action>
+                    </block>
+                </block>
             </block>
         </reference>
         <reference name="footer">
             <block type="custompdf/adminhtml_template" name="footer.received" template="timvroom/pdf/page/html/received.phtml" after="footer.notices" />
         </reference>
     </adminhtml_sales_shipment_pdfshipments>
+
+    <adminhtml_order_shipment_pdfshipments_rembours>
+        <reference name="content">
+            <block type="custompdf/adminhtml_sales_shipment_pdf" name="pdf_grid"></block>
+        </reference>
+
+    </adminhtml_order_shipment_pdfshipments_rembours>
 </layout>

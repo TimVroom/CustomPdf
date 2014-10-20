@@ -1,7 +1,13 @@
 body {
-  font-size: 14px;
+  font-size: 12px;
   font-family: "Lucida Grande", sans-serif;
   line-height: 1.4; }
+
+h1 {
+  font-size: 18px; }
+
+h2 {
+  font-size: 16px; }
 
 .pagebreak {
   page-break-after: always; }
@@ -15,8 +21,8 @@ body {
   .clearfix:after {
     clear: both; }
 
-.clearfix:after {
-  clear: both; }
+.a-right {
+  text-align: right !important; }
 
 .logo {
   float: right; }
@@ -25,7 +31,8 @@ body {
   font-size: 10px; }
 
 address {
-  font-style: normal; }
+  font-style: normal;
+  margin-bottom: 20px; }
   address .label {
     font-weight: bold; }
 
@@ -50,16 +57,22 @@ address {
   padding: 0 20px 20px; }
 
 .products-table .col-1 {
-  width: 80%; }
-.products-table .col-2 {
-  width: 10%; }
-.products-table .col-3 {
-  width: 10%; }
+  width: 70%; }
+.products-table .col-2, .products-table .col-3, .products-table .col-4 {
+  width: 10%;
+  text-align: center; }
 .products-table thead tr {
   background: #cccccc;
   border-top: 0; }
-.products-table tr {
+.products-table thead th {
+  padding-left: 4px;
+  padding-right: 4px; }
+.products-table tbody tr td {
   border-top: 1px solid #ccc; }
+.products-table .item-options {
+  font-size: 10px; }
+  .products-table .item-options dt {
+    font-weight: bold; }
 
 .totals {
   text-align: right;
@@ -71,13 +84,15 @@ address {
   .totals .totals-table {
     text-align: right;
     width: 100%;
-    line-height: 1.2em; }
+    line-height: 1.2em;
+    border-top: 1px solid #ccc; }
     .totals .totals-table th {
       text-align: right;
       width: 100%; }
     .totals .totals-table td {
       text-align: left;
-      padding-left: 20px; }
+      padding-left: 20px;
+      white-space: nowrap; }
 
 .notice {
   min-height: 80px; }
@@ -103,6 +118,8 @@ address {
       bottom: 0;
       height: 0;
       margin-top: 14px; }
+    .confirmation .fieldset .field.field-signature {
+      margin-top: 20px; }
 
 .disclaimer {
   font-size: 10px; }

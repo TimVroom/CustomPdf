@@ -18,75 +18,50 @@
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 ?>
-<h1><?php echo $this->helper('custompdf')->getPdfTitle();?></h1>
-<label>Levering aan:</label>
+<h1><?php echo $this->helper('custompdf')->getPdfTitle(); ?></h1>
+<label><?php echo $this->__('Delivery to');?>:</label>
 <address>
     <?php $shippingAddress = $this->getShippingAddress(); ?>
-    <span class="label">Klantnaam: </span><?php echo $shippingAddress->getName(); ?><br/>
-    <span class="label">Address: </span><?php echo $shippingAddress->getStreetFull(); ?><br/>
+    <span class="label"><?php echo $this->__('Customer Name');?>: </span><?php echo $shippingAddress->getName(); ?><br/>
+    <span class="label"><?php echo $this->__('Address');?>: </span><?php echo $shippingAddress->getStreetFull(); ?><br/>
     <span
-        class="label">Postcode: </span><?php echo $shippingAddress->getPostcode(); ?> <?php echo $shippingAddress->getCity(); ?>
+        class="label"><?php echo $this->__('Postcode');?>: </span><?php echo $shippingAddress->getPostcode(); ?> <?php echo $shippingAddress->getCity(); ?>
     <br/>
 </address>
-<br/>
 
 <table class="data-table info-table">
     <tr>
-        <th class="col-1"><?php echo $this->__('Pakbonnummer');?></th>
+        <th class="col-1"><?php echo $this->__('Pakbonnummer'); ?></th>
         <td class="col-2">: <?php echo $this->getShipment()->getIncrementId(); ?></td>
-        <th class="col-3"><?php echo $this->__('Billing name');?></th>
-        <td class="col-4">: <?php echo $this->getBillingAddress()->getName();?></td>
+        <th class="col-3"><?php echo $this->__('Billing name'); ?></th>
+        <td class="col-4">: <?php echo $this->getBillingAddress()->getName(); ?></td>
     </tr>
     <tr>
-        <th class="col-1"><?php echo $this->__('Delivery date');?></th>
+        <th class="col-1"><?php echo $this->__('Delivery date'); ?></th>
         <td class="col-2">:</td>
-        <th class="col-3"><?php echo $this->__('Shipping method');?></th>
-        <td class="col-4">: <?php echo $this->getOrder()->getShippingDescription();?></td>
+        <th class="col-3"><?php echo $this->__('Shipping method'); ?></th>
+        <td class="col-4">: <?php echo $this->getOrder()->getShippingDescription(); ?></td>
     </tr>
     <tr>
-        <th class="col-1"><?php echo $this->__('Order #');?></th>
+        <th class="col-1"><?php echo $this->__('Order #'); ?></th>
         <td class="col-2">: <?php echo $this->getOrder()->getIncrementId(); ?></td>
-        <th class="col-3"><?php echo $this->__('Payment method');?></th>
-        <td class="col-4">: <?php echo $this->getOrder()->getPayment()->getMethodInstance()->getTitle();?></td>
+        <th class="col-3"><?php echo $this->__('Payment method'); ?></th>
+        <td class="col-4">: <?php echo $this->getOrder()->getPayment()->getMethodInstance()->getTitle(); ?></td>
     </tr>
 </table>
+
 <hr/>
 <div class="content-block">
-    <div class="products">
-        <table class="data-table products-table">
-            <thead>
-            <tr>
-                <th class="col-1"><?php echo $this->__('Item');?></th>
-                <th class="col-2"><?php echo $this->__('Qty ordered');?></th>
-                <th class="col-3"><?php echo $this->__('Qty delivered');?></th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>Perfect Sleep</td>
-                <td>2</td>
-            </tr>
-            <tr>
-                <td>KussenSleep</td>
-                <td>1</td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
+    <?php echo $this->getChildHtml('items', false); ?>
     <div class="totals clearfix">
         <table class=totals-table>
-            <tr>
-                <th>Totaal bedrag:</th>
-                <td>...</td>
-            </tr>
-            <tr>
-                <th>BTW:</th>
-                <td>...</td>
-            </tr>
-            <tr>
-                <th>Te voldoen bij levering</th>
-                <td>...</td>
-            </tr>
+            <colgroup>
+                <col />
+                <col width="1" />
+            </colgroup>
+            <tbody>
+                <?php echo $this->getChild('order_totals')->reset()->toHtml(); ?>
+            </tbody>
         </table>
     </div>
 </div>
