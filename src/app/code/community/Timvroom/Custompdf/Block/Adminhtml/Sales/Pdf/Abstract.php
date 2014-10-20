@@ -10,6 +10,7 @@
 class Timvroom_Custompdf_Block_Adminhtml_Sales_Pdf_Abstract extends Timvroom_Custompdf_Block_Adminhtml_Template
 {
 
+
     public function getObject()
     {
         return Mage::registry('current_object');
@@ -27,5 +28,16 @@ class Timvroom_Custompdf_Block_Adminhtml_Sales_Pdf_Abstract extends Timvroom_Cus
     public function getShippingAddress()
     {
         return $this->getorder()->getShippingAddress();
+    }
+
+    public function hasRembours()
+    {
+        return in_array($this->getOrder()->getPayment()->getMethod(), Mage::helper('custompdf')->getRemboursMethods());
+    }
+
+    public function getRemboursText()
+    {
+        $text = Mage::helper('custompdf')->getRemboursText();
+        return Mage::helper('custompdf/render')->insertCheckboxInText($text);
     }
 }

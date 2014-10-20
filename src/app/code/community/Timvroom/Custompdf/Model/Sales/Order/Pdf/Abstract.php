@@ -36,7 +36,7 @@ abstract class Timvroom_Custompdf_Model_Sales_Order_Pdf_Abstract extends Varien_
         $root->setData('objects', $objects);
         $this->_controllerObject->renderLayout();
         $html = $this->_controllerObject->getResponse()->getBody();
-        Mage::log($html,null,'pdf-html.log');
+//        Mage::log($html,null,'pdf-html.log');
         $this->_pdf->load_html($html);
         $this->_controllerObject->getResponse()->setBody('');
 

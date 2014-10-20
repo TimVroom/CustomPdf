@@ -53,6 +53,15 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </rembours_methods>
+                        <rembours_text translate="title">
+                            <label>Information for rembours</label>
+                            <comment>use %checkbox% to insert a checkbox</comment>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </rembours_text>
                     </fields>
                 </general>
                 <pdf translate="label">

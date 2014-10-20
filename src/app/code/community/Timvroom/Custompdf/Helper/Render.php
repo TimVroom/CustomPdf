@@ -9,6 +9,19 @@
  */
 class Timvroom_Custompdf_Helper_Render extends Mage_Core_Helper_Abstract
 {
+    protected $_processed = array();
+
+    public function addToProcessed($id)
+    {
+        $this->_processed[$id] = true;
+        return $this;
+    }
+
+    public function isProcessed($id)
+    {
+        return isset($this->_processed[$id]);
+    }
+
     static $_pageIterator = 1;
     /**
      * @param Mage_Adminhtml_Controller_Action $controller
@@ -68,5 +81,11 @@ class Timvroom_Custompdf_Helper_Render extends Mage_Core_Helper_Abstract
             }
         }
         return $c;
+    }
+
+    public function insertCheckboxInText($text)
+    {
+        $rand = rand(1000,99999);
+        return str_replace('%checkbox%', '<span class="checkbox">&nbsp;</span>', $text);
     }
 }

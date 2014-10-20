@@ -27,7 +27,7 @@
             <action method="setTitle"><title>Packingslip</title></action>
         </reference>
         <reference name="content">
-            <block type="custompdf/adminhtml_sales_pdf_shipment" name="sales.order.print.shipment"
+            <block type="custompdf/adminhtml_sales_pdf_shipment" name="sales.order.pdf.shipment"
                    template="timvroom/pdf/sales/order/shipment.phtml">
                 <block type="custompdf/adminhtml_sales_item" template="timvroom/pdf/items.phtml" name="items">
                     <action method="addItemRender">
@@ -44,6 +44,7 @@
                     </block>
                 </block>
             </block>
+            <block type="custompdf/adminhtml_sales_pdf_shipment" name="sales.order.pdf.rembours" template="timvroom/pdf/sales/order/rembours.phtml" />
         </reference>
         <reference name="footer">
             <block type="custompdf/adminhtml_template" name="footer.received" template="timvroom/pdf/page/html/received.phtml" after="footer.notices" />

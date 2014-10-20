@@ -23,6 +23,19 @@ h2 {
     page-break-after: always;
 }
 
+input[type=checkbox] {
+    -dompdf-appearance: checkbox;
+}
+
+span.checkbox {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    border: 1px solid #000000;
+    margin-right: 4px;
+    margin-bottom: -.3em;
+}
+
 .clearfix {
     *zoom: 1;
     &:before, &:after {
@@ -83,14 +96,14 @@ address {
 }
 
 .content-block {
-    padding: 0 $spacing $spacing;
+    padding: 0;
 }
 
 .products-table {
     .col-1 {
-        width: 70%;
+        width: 60%;
     }
-    .col-2, .col-3, .col-4 {
+    .col-2, .col-3, .col-4,.col-5 {
         width: 10%;
         text-align: center;
     }
@@ -116,6 +129,7 @@ address {
 
     .item-options {
         font-size: $f-s;
+        margin-bottom: 0;
         dt {
             font-weight: bold;
         }
@@ -124,7 +138,7 @@ address {
 
 .totals {
     text-align: right;
-    margin-top: $spacing;
+    margin-top: $spacing/2;
     &:after {
         content: " ";
         display: table;
@@ -139,6 +153,7 @@ address {
         th {
             text-align: right;
             width:      100%;
+            font-weight: normal;
         }
         td {
             text-align:   left;

@@ -31,8 +31,8 @@
 
 <table class="data-table info-table">
     <tr>
-        <th class="col-1"><?php echo $this->__('Pakbonnummer'); ?></th>
-        <td class="col-2">: <?php echo $this->getShipment()->getIncrementId(); ?></td>
+        <th class="col-1"><?php $this->__('Pakbonnummer'); ?></th>
+        <td class="col-2"><?php $this->getShipment()->getIncrementId(); ?></td>
         <th class="col-3"><?php echo $this->__('Billing name'); ?></th>
         <td class="col-4">: <?php echo $this->getBillingAddress()->getName(); ?></td>
     </tr>

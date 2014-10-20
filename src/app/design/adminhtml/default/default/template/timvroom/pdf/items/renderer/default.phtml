@@ -40,7 +40,12 @@ $end = 1;
         <?php echo $_item->getSku();?>
     </td>
     <td class="col-3">
+        <?php if($colli = $_item->getProduct()->getData('nc_colli')):?>
+            <?php echo ((int)$colli * (int)$_item->getQtyShipped());?>
+        <?php endif;?>
+    </td>
+    <td class="col-4">
         <?php echo (int)$_item->getQtyShipped();?>
     </td>
-    <td class="col-4"></td>
+    <td class="col-5"></td>
 </tr>

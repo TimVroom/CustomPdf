@@ -20,7 +20,7 @@ class Timvroom_Custompdf_Block_Adminhtml_Sales_Item extends Timvroom_Custompdf_B
 
     public function getItems()
     {
-        if ($this->hasObject() && $this->getObject()->getId() != Mage::registry('current_object')->getId()) {
+        if ($this->hasObject() && $this->getObject()->getOrder()->getId() != Mage::registry('current_object')->getOrder()->getId()) {
             $this->_items = null;
             $this->unsObject();
         }
@@ -29,16 +29,16 @@ class Timvroom_Custompdf_Block_Adminhtml_Sales_Item extends Timvroom_Custompdf_B
                 $this->setObject(Mage::registry('current_object'));
             }
 
-            if (is_callable(array($this->getObject(), 'getAllItems')) && $this->getObject()->getAllItems()) {
-                $this->_items = $this->getObject()->getAllItems();
-            } elseif (is_callable(array($this->getObject(), 'getItems')) && $this->getObject()->getItems()) {
-                $this->_items = $this->getObject()->getItems();
+            if (is_callable(array($this->getObject()->getOrder(), 'getAllItems')) && $this->getObject()->getOrder()->getAllItems()) {
+                $this->_items = $this->getObject()->getOrder()->getAllItems();
+            } elseif (is_callable(array($this->getObject()->getOrder(), 'getItems')) && $this->getObject()->getOrder()->getItems()) {
+                $this->_items = $this->getObject()->getOrder()->getItems();
             }
             if ($this->_items === null) {
                 $this->_items = array();
             } else {
                 foreach ($this->_items as $key => $item){
-                    if ($item->getOrderItem() && $item->getOrderItem()->getParentItem()) {
+                    if ($item && $item->getParentItem()) {
                         unset($this->_items[$key]);
                     }
                 }

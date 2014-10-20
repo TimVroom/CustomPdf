@@ -35,6 +35,9 @@
     $storeId = 0;
     $appEmulation = Mage::getSingleton('core/app_emulation');
     foreach ($this->getObjects() as $object):
+        if ($this->helper('custompdf/render')->isProcessed($object->getOrder()->getId())) {
+            continue;
+        }
         if ($object->getStoreId()) {
             $storeId = $object->getStoreId();
             $initialEnvironmentInfo = $appEmulation->startEnvironmentEmulation($storeId);
@@ -60,6 +63,7 @@
             <?php echo $this->getChildHtml('content', false) ?>
             <?php echo $this->getChildHtml('footer', false) ?>
         </div>
+        <?php $this->helper('custompdf/render')->addToProcessed($object->getOrder()->getId());?>
     <?php endforeach;
 endif;?>
 <?php

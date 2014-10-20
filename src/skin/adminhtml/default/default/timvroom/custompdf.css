@@ -12,6 +12,17 @@ h2 {
 .pagebreak {
   page-break-after: always; }
 
+input[type=checkbox] {
+  -dompdf-appearance: checkbox; }
+
+span.checkbox {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  border: 1px solid #000000;
+  margin-right: 4px;
+  margin-bottom: -.3em; }
+
 .clearfix {
   *zoom: 1; }
   .clearfix:before, .clearfix:after {
@@ -54,11 +65,11 @@ address {
   white-space: nowrap; }
 
 .content-block {
-  padding: 0 20px 20px; }
+  padding: 0; }
 
 .products-table .col-1 {
-  width: 70%; }
-.products-table .col-2, .products-table .col-3, .products-table .col-4 {
+  width: 60%; }
+.products-table .col-2, .products-table .col-3, .products-table .col-4, .products-table .col-5 {
   width: 10%;
   text-align: center; }
 .products-table thead tr {
@@ -70,13 +81,14 @@ address {
 .products-table tbody tr td {
   border-top: 1px solid #ccc; }
 .products-table .item-options {
-  font-size: 10px; }
+  font-size: 10px;
+  margin-bottom: 0; }
   .products-table .item-options dt {
     font-weight: bold; }
 
 .totals {
   text-align: right;
-  margin-top: 20px; }
+  margin-top: 10px; }
   .totals:after {
     content: " ";
     display: table;
@@ -88,7 +100,8 @@ address {
     border-top: 1px solid #ccc; }
     .totals .totals-table th {
       text-align: right;
-      width: 100%; }
+      width: 100%;
+      font-weight: normal; }
     .totals .totals-table td {
       text-align: left;
       padding-left: 20px;

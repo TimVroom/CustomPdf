@@ -62,6 +62,7 @@
                 <paper_size>a4</paper_size>
                 <font>serif</font>
                 <enable_html5>1</enable_html5>
+                <rembours_text><![CDATA[De levering is betaald middels %checkbox%pin / %checkbox%contant.]]></rembours_text>
             </general>
             <pdf>
                 <title>Afleverbon</title>
